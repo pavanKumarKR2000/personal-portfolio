@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inclusive_Sans, Sofia_Sans } from "next/font/google";
 import "./globals.css";
+import ProfileCard from "@/components/ProfileCard";
+import Sidebar from "@/components/Sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Sofia_Sans({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${font.className} flex items-center justify-between gap-x-10 p-6 min-h-screen`}
+      >
+        <ProfileCard />
+        {children}
+        <Sidebar />
+      </body>
     </html>
   );
 }
